@@ -27,7 +27,7 @@ namespace LMS.Controllers
 
         [HttpPost("validate-password")]
         public IActionResult ValidatePassword([FromBody] PasswordValidationDto dto)
-        {
+        { 
             var result = _authService.ValidatePassword(dto.UsernameOrEmail, dto.Password);
             if (!result.Success) return Unauthorized("Invalid credentials.");
             var token = _tokenService.GenerateAccessToken(result.User);
